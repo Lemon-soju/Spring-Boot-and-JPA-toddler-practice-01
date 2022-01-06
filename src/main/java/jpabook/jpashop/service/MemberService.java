@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional(readOnly = true) // 데이터 변경할 때는 꼭 Transactional annotation 안에서 이루어져야 한다.
 // readOnly -> 성능 최적화
 @RequiredArgsConstructor // final 있는 필드만 가지고 생성자 만듬
-public class MemberService {
+public class MemberService { // Ctrl + Shift + T -> Test 만들기
 
     private final MemberRepository memberRepository; // 변경할 일이 없으므로 final 설정
 
