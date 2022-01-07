@@ -13,20 +13,19 @@ public class ItemRepository {
 
     private final EntityManager em;
 
-    public void save(Item item){
-        if (item.getId() == null){ // 신규 등록
+    public void save(Item item) {
+        if (item.getId() == null) { // 신규 등록
             em.persist(item);
-        }else{ // 업데이트
+        } else { // 업데이트
             em.merge(item);
         }
+    }
+    public Item findOne(Long id){
+        return em.find(Item.class, id);
+    }
 
-        public Item findOne(Long id){
-            return em.find(Item.class, id);
-        }
-
-        public List<Item> findAll(){
-            return em.createQuery("select i from Item i", Item.class)
-                    .getResultList();
-        }
+    public List<Item> findAll(){
+        return em.createQuery("select i from Item i", Item.class)
+                .getResultList();
     }
 }
