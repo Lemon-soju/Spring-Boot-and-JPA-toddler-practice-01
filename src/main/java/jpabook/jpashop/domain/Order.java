@@ -26,10 +26,10 @@ public class Order {
     @JoinColumn(name = "member_id") // reference 하는 속성
     private Member member;
 
-    @OneToMany(mappedBy = "order") // OrderItem에 있는 order 필드에 의해서 레퍼런스 됨
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // OrderItem에 있는 order 필드에 의해서 레퍼런스 됨
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = LAZY) // 1:1에서는 연관관계의 주인은 아무곳이나 해도 되지만 많이 사용하는 부분을 주인으로 설정
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)// 1:1에서는 연관관계의 주인은 아무곳이나 해도 되지만 많이 사용하는 부분을 주인으로 설정
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
